@@ -8,12 +8,12 @@ const linkStyle = {
 }
 const authenticatedOptions = (
 	<>
-		<Nav.Item>
+		<Nav.Item className='m-2'>
 			<Link to='change-password' style={linkStyle}>
 				Change Password
 			</Link>
 		</Nav.Item>
-		<Nav.Item>
+		<Nav.Item className='m-2'>
 			<Link to='sign-out' style={linkStyle}>
 				Sign Out
 			</Link>
@@ -23,28 +23,28 @@ const authenticatedOptions = (
 
 const unauthenticatedOptions = (
 	<>
-        <Nav.Item>
+        <Nav.Item className='m-2'>
 		    <Link to='sign-up' style={linkStyle}>Sign Up</Link>
         </Nav.Item>
-        <Nav.Item>
+        <Nav.Item className='m-2'>
 		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
         </Nav.Item>
 	</>
 )
 
 const alwaysOptions = (
-	<>
-		<Nav.Item>
-			<Link to='/' style={linkStyle}>Home</Link>
-		</Nav.Item>
-	</>
+
+	<Nav.Item className='m-2'>
+		<Link to='/' style={linkStyle}>Home</Link>
+	</Nav.Item>
+
 )
 
 const Header = ({ user }) => (
 	<Navbar bg='primary' variant='dark' expand='md'>
 		<Navbar.Brand>
-            <Link to='/' style={linkStyle}>
-                react-auth-template
+            <Link to='/create-character' style={linkStyle}>
+                Create
             </Link>
         </Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
