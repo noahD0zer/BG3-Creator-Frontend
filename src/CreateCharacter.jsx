@@ -6,46 +6,66 @@ function CreateCharacter() {
     background: '',
     race: '',
     characterClass: '',
+    weaponProficiencies: ['','',''],
+    armorProficiencies: [],
+    skillProficiencies: [],
     // Add more fields for abilities, proficiencies, etc.
   });
 
   const [backgrounds, setBackgrounds] = useState([]);
   const [classes, setClasses] = useState([]);
   const [races, setRaces] = useState([]);
+  const [proficiencies, setProficiencies] = useState([]);
 
   useEffect(() => {
     getBackgrounds()
       .then(res => {
         setBackgrounds(res.data);
-        console.log("backgrounds", res.data);
       })
-      .catch((error) => console.error('Error fetching backgrounds:', error));
-  }, []);
-
-  useEffect(() => {
+    .catch((error) => console.error('Error fetching backgrounds:', error));
+    
     getClasses()
       .then(res => {
         setClasses(res.data);
-        console.log("classes", res.data);
       })
-      .catch((error) => console.error('Error fetching classes:', error));
-  }, []);
-
-  useEffect(() => {
+    .catch((error) => console.error('Error fetching classes:', error));
+    
     getRaces()
       .then(res => {
         setRaces(res.data);
-        console.log("races", res.data);
       })
-      .catch((error) => console.error('Error fetching races:', error));
+    .catch((error) => console.error('Error fetching races:', error));
+
+    getProficiencies()
+    .then(res => {
+      setProficiencies(res.data);
+    })
+    .catch((error) => console.error('Error fetching proficiencies:', error));
+    
   }, []);
+  console.log("backgrounds", backgrounds);
+  console.log("classes", classes);
+  console.log("races", races);
+  console.log("proficiencies", proficiencies);
+
+
+  const handleProficiencySelect = (e, proficiencyType, index) => {
+    const selectedValue = e.target.value;
+    setCharacterData((prevData) => ({
+      ...prevData,
+      [proficiencyType]: [
+        ...prevData[proficiencyType].slice(0, index),
+        selectedValue,
+        ...prevData[proficiencyType].slice(index + 1),
+      ],
+    }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Send characterData to the server for creation
     // Use the fetch API or any other method for this
   };
-
   return (
     <div>
       <h1>Create Character</h1>
@@ -96,6 +116,79 @@ function CreateCharacter() {
               </option>
             ))}
           </select>
+        </div>
+        
+        <div>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              cursor: 'pointer',
+            }}
+          >
+            <span style={{ marginRight: '8px' }}>Weapon Proficiency 1:</span>
+            <select
+              value={characterData.weaponProficiencies[0]}
+              onChange={(e) => handleProficiencySelect(e, 'weaponProficiencies', 0)}
+            >
+              <option value="">Select a Weapon Proficiency</option>
+              {proficiencies.map((proficiency) => (
+                proficiency.proficiencyType === 'weapon' && (
+                  <option key={proficiency._id.$oid} value={proficiency.proficiencyName}>
+                    {proficiency.proficiencyName}
+                  </option>
+                )
+              ))}
+            </select>
+          </div>
+        </div>
+        <div>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              cursor: 'pointer',
+            }}
+          >
+            <span style={{ marginRight: '8px' }}>Weapon Proficiency 2:</span>
+            <select
+              value={characterData.weaponProficiencies[1]}
+              onChange={(e) => handleProficiencySelect(e, 'weaponProficiencies', 1)}
+            >
+              <option value="">Select a Weapon Proficiency</option>
+              {proficiencies.map((proficiency) => (
+                proficiency.proficiencyType === 'weapon' && (
+                  <option key={proficiency._id.$oid} value={proficiency.proficiencyName}>
+                    {proficiency.proficiencyName}
+                  </option>
+                )
+              ))}
+            </select>
+          </div>
+        </div>
+        <div>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              cursor: 'pointer',
+            }}
+          >
+            <span style={{ marginRight: '8px' }}>Weapon Proficiency 3:</span>
+            <select
+              value={characterData.weaponProficiencies[2]}
+              onChange={(e) => handleProficiencySelect(e, 'weaponProficiencies', 2)}
+            >
+              <option value="">Select a Weapon Proficiency</option>
+              {proficiencies.map((proficiency) => (
+                proficiency.proficiencyType === 'weapon' && (
+                  <option key={proficiency._id.$oid} value={proficiency.proficiencyName}>
+                    {proficiency.proficiencyName}
+                  </option>
+                )
+              ))}
+            </select>
+          </div>
         </div>
 
         {/* Other fields for abilities, proficiencies, etc. */}
