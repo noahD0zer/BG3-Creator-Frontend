@@ -12,7 +12,7 @@ export const getOneCharacter = (id) => {
 }
 
 // CREATE -> Add Character
-export const CreateCharacter = (user, newCharacter) => {
+export const createCharacter = (user, newCharacter) => {
     return axios({
         url: `${apiUrl}/characters`,
         method: 'POST',

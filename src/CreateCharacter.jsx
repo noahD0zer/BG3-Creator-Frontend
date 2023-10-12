@@ -1,14 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { getBackgrounds, getClasses, getRaces, getProficiencies } from './api/getoptions';
+import {createCharacter} from './api/characters'
+import { createCharacterSucess, createCharacterFailure } from './components/shared/AutoDismissAlert/messages';
 
-function CreateCharacter() {
+
+
+const CreateCharacter = (props) => {
+  const { user, msgAlert } = props;
+  console.log(user);
+
   const [characterData, setCharacterData] = useState({
+    name: '',
     background: '',
     race: '',
     characterClass: '',
     weaponProficiencies: ['','',''],
-    armorProficiencies: [],
-    skillProficiencies: [],
+    armorProficiencies: ['','',''],
+    skillProficiencies: ['','','','',''],
     // Add more fields for abilities, proficiencies, etc.
   });
 
@@ -61,15 +69,41 @@ function CreateCharacter() {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Send characterData to the server for creation
-    // Use the fetch API or any other method for this
-  };
+  const onSubmit = (e) => {
+    e.preventDefault()
+
+    createCharacter(user,characterData)
+        .then(() => {
+          console.log('Character created:');
+            msgAlert({
+                heading: 'Character Created',
+                message: createCharacterSucess,
+                variant: 'success'
+            })
+        })
+        .catch((error) => {
+          console.error('Error creating character:', error);
+             msgAlert({
+                 heading: 'Character Creation Failed',
+                 message: createCharacterFailure,
+                 variant: 'fail'
+            })
+        })
+  }
+  
   return (
     <div>
       <h1>Create Character</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={onSubmit}>
+        <div>
+        <label htmlFor="name">Name</label>
+          <input 
+          id="name"
+          value={characterData.name}
+          onChange={(e) => setCharacterData({ ...characterData, name: e.target.value })}
+          ></input>
+        </div>
+        
         <div>
           <label htmlFor="background">Background:</label>
           <select
@@ -190,6 +224,201 @@ function CreateCharacter() {
             </select>
           </div>
         </div>
+
+        <div>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              cursor: 'pointer',
+            }}
+          >
+            <span style={{ marginRight: '8px' }}>Armor Proficiency 1:</span>
+            <select
+              value={characterData.armorProficiencies[0]}
+              onChange={(e) => handleProficiencySelect(e, 'armorProficiencies', 0)}
+            >
+              <option value="">Select an Armor Proficiency</option>
+              {proficiencies.map((proficiency) => (
+                proficiency.proficiencyType === 'armor' && (
+                  <option key={proficiency._id.$oid} value={proficiency.proficiencyName}>
+                    {proficiency.proficiencyName}
+                  </option>
+                )
+              ))}
+            </select>
+          </div>
+        </div>
+        <div>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              cursor: 'pointer',
+            }}
+          >
+            <span style={{ marginRight: '8px' }}>Armor Proficiency 2:</span>
+            <select
+              value={characterData.armorProficiencies[1]}
+              onChange={(e) => handleProficiencySelect(e, 'armorProficiencies', 1)}
+            >
+              <option value="">Select an Armor Proficiency</option>
+              {proficiencies.map((proficiency) => (
+                proficiency.proficiencyType === 'armor' && (
+                  <option key={proficiency._id.$oid} value={proficiency.proficiencyName}>
+                    {proficiency.proficiencyName}
+                  </option>
+                )
+              ))}
+            </select>
+          </div>
+        </div>
+        <div>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              cursor: 'pointer',
+            }}
+          >
+            <span style={{ marginRight: '8px' }}>Armor Proficiency 3:</span>
+            <select
+              value={characterData.armorProficiencies[2]}
+              onChange={(e) => handleProficiencySelect(e, 'armorProficiencies', 2)}
+            >
+              <option value="">Select an Armor Proficiency</option>
+              {proficiencies.map((proficiency) => (
+                proficiency.proficiencyType === 'armor' && (
+                  <option key={proficiency._id.$oid} value={proficiency.proficiencyName}>
+                    {proficiency.proficiencyName}
+                  </option>
+                )
+              ))}
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              cursor: 'pointer',
+            }}
+          >
+            <span style={{ marginRight: '8px' }}>Skill Proficiency 1:</span>
+            <select
+              value={characterData.skillProficiencies[0]}
+              onChange={(e) => handleProficiencySelect(e, 'skillProficiencies', 0)}
+            >
+              <option value="">Select a Skill Proficiency</option>
+              {proficiencies.map((proficiency) => (
+                proficiency.proficiencyType === 'skill' && (
+                  <option key={proficiency._id.$oid} value={proficiency.proficiencyName}>
+                    {proficiency.proficiencyName}
+                  </option>
+                )
+              ))}
+            </select>
+          </div>
+        </div>
+        <div>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              cursor: 'pointer',
+            }}
+          >
+            <span style={{ marginRight: '8px' }}>Skill Proficiency 2:</span>
+            <select
+              value={characterData.skillProficiencies[1]}
+              onChange={(e) => handleProficiencySelect(e, 'skillProficiencies', 1)}
+            >
+              <option value="">Select a Skill Proficiency</option>
+              {proficiencies.map((proficiency) => (
+                proficiency.proficiencyType === 'skill' && (
+                  <option key={proficiency._id.$oid} value={proficiency.proficiencyName}>
+                    {proficiency.proficiencyName}
+                  </option>
+                )
+              ))}
+            </select>
+          </div>
+        </div>
+        <div>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              cursor: 'pointer',
+            }}
+          >
+            <span style={{ marginRight: '8px' }}>Skill Proficiency 3:</span>
+            <select
+              value={characterData.skillProficiencies[2]}
+              onChange={(e) => handleProficiencySelect(e, 'skillProficiencies', 2)}
+            >
+              <option value="">Select a Skill Proficiency</option>
+              {proficiencies.map((proficiency) => (
+                proficiency.proficiencyType === 'skill' && (
+                  <option key={proficiency._id.$oid} value={proficiency.proficiencyName}>
+                    {proficiency.proficiencyName}
+                  </option>
+                )
+              ))}
+            </select>
+          </div>
+        </div>
+        <div>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              cursor: 'pointer',
+            }}
+          >
+            <span style={{ marginRight: '8px' }}>Skill Proficiency 4:</span>
+            <select
+              value={characterData.skillProficiencies[3]}
+              onChange={(e) => handleProficiencySelect(e, 'skillProficiencies', 3)}
+            >
+              <option value="">Select a Skill Proficiency</option>
+              {proficiencies.map((proficiency) => (
+                proficiency.proficiencyType === 'skill' && (
+                  <option key={proficiency._id.$oid} value={proficiency.proficiencyName}>
+                    {proficiency.proficiencyName}
+                  </option>
+                )
+              ))}
+            </select>
+          </div>
+        </div>
+        <div>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              cursor: 'pointer',
+            }}
+          >
+            <span style={{ marginRight: '8px' }}>Skill Proficiency 5:</span>
+            <select
+              value={characterData.skillProficiencies[4]}
+              onChange={(e) => handleProficiencySelect(e, 'skillProficiencies', 4)}
+            >
+              <option value="">Select a Skill Proficiency</option>
+              {proficiencies.map((proficiency) => (
+                proficiency.proficiencyType === 'skill' && (
+                  <option key={proficiency._id.$oid} value={proficiency.proficiencyName}>
+                    {proficiency.proficiencyName}
+                  </option>
+                )
+              ))}
+            </select>
+          </div>
+        </div>
+
 
         {/* Other fields for abilities, proficiencies, etc. */}
         <button type="submit">Create Character</button>

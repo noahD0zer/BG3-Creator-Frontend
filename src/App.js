@@ -69,7 +69,7 @@ const App = () => {
           path="/create-character"
           element={
             <RequireAuth user={user}>
-              <CreateCharacter msgAlert={msgAlert} />
+              <CreateCharacter msgAlert={msgAlert} user={user} />
             </RequireAuth>
           }
         />
