@@ -29,7 +29,7 @@ export const createCharacter = (user, newCharacter) => {
 // UPDATE -> Change Character
 export const updateCharacter = (user, updatedCharacter) => {
     return axios({
-        url: `${apiUrl}/pets/${updatedCharacter._id}`,
+        url: `${apiUrl}/characters/${updatedCharacter._id}`,
         method: 'PATCH',
         headers: {
             Authorization: `Token token=${user.token}`
@@ -41,7 +41,7 @@ export const updateCharacter = (user, updatedCharacter) => {
 // DELETE -> Delete Character
 export const removeCharacter = (user, characterId) => {
     return axios({
-        url: `${apiUrl}/pets/${characterId}`,
+        url: `${apiUrl}/characters/${characterId}`,
         method: 'DELETE',
         headers: {
             Authorization: `Token token=${user.token}`
