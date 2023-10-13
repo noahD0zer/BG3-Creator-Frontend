@@ -42,7 +42,7 @@ const CharacterList = ({ user }) => {
               <p>Name: {character.name}</p>
               <p>Class: {character.characterClass}</p>
               <Link to={`/characters/${character._id}`}>View Details</Link>
-              <button onClick={() => handleDelete(character._id)}>Delete</button> {/* Use a button for deletion */}
+              <button onClick={() => handleDelete(character._id)}>Delete</button> 
             </li>
           ))}
         </ul>
