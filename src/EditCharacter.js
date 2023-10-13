@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { updateCharacter } from './api/characters';
 import { getBackgrounds, getClasses, getRaces, getProficiencies } from './api/getoptions';
 
+
+
 const EditCharacter = (props) => {
   const { user, character, msgAlert, triggerRefresh } = props;
 
@@ -37,7 +39,9 @@ const EditCharacter = (props) => {
       .catch((error) => console.error('Error fetching proficiencies:', error));
   }, []);
 
+
   const updateCharacterDetails = () => {
+    console.log('this is character data', characterData)
     updateCharacter(user, characterData)
       .then((response) => {
         msgAlert({
@@ -57,6 +61,10 @@ const EditCharacter = (props) => {
         });
       });
   };
+
+  if (!characterData) {
+    return (<div>Loading...</div>)
+  }
 
   return (
     <div>
