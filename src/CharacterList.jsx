@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { getAllCharacters } from './api/characters';
 
 const CharacterList = ({ user }) => {
@@ -7,7 +8,7 @@ const CharacterList = ({ user }) => {
   useEffect(() => {
     getAllCharacters(user)
       .then((response) => {
-        setCharacters(response.data.characters); // Assuming the characters are stored in a 'characters' property
+        setCharacters(response.data.characters); 
       })
       .catch((error) => {
         console.error('Error fetching characters:', error);
@@ -25,6 +26,7 @@ const CharacterList = ({ user }) => {
               <li key={characterId}>
                 <p>Name: {character.name}</p>
                 <p>Class: {character.characterClass}</p>
+                <Link to={`/characters/${characterId}`}>View Details</Link>
               </li>
             );
           })}

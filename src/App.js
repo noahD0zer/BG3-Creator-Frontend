@@ -14,6 +14,7 @@ import ChangePassword from './components/auth/ChangePassword';
 // Import the CreateCharacter component
 import CreateCharacter from './CreateCharacter';
 import CharacterList from './CharacterList';
+import CharacterDetail from './CharacterDetail';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -81,6 +82,10 @@ const App = () => {
               <CharacterList msgAlert={msgAlert} user={user} />
             </RequireAuth>
           }
+        />
+        <Route
+          path="/characters/:id" // characterdetail without edit is public
+          element={<CharacterDetail  user={user} msgAlert={msgAlert} />}
         />
         <Route
           path="/home"

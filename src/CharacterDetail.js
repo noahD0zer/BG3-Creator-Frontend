@@ -2,18 +2,16 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getOneCharacter } from './api/characters';
+import { useNavigate } from 'react-router-dom';
 
 const CharacterDetail = () => {
-  const { id } = useParams(); // Get the character ID from the URL
+  const { id } = useParams();
   const [character, setCharacter] = useState(null);
 
   useEffect(() => {
-    // Fetch the character details using the API function
     getOneCharacter(id)
-      .then((response) => {
-        setCharacter(response.data.character);
-      })
-      .catch((error) => {
+      .then(res => setCharacter(response.data.character))
+      .catch((err) => {
         console.error('Error fetching character:', error);
       });
   }, [id]);
