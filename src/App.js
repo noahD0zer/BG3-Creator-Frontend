@@ -13,6 +13,7 @@ import ChangePassword from './components/auth/ChangePassword';
 
 // Import the CreateCharacter component
 import CreateCharacter from './CreateCharacter';
+import CharacterList from './CharacterList';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -70,6 +71,22 @@ const App = () => {
           element={
             <RequireAuth user={user}>
               <CreateCharacter msgAlert={msgAlert} user={user} />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/character-list"
+          element={
+            <RequireAuth user={user}>
+              <CharacterList msgAlert={msgAlert} user={user} />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/home"
+          element={
+            <RequireAuth user={user}>
+              <Home msgAlert={msgAlert} user={user} />
             </RequireAuth>
           }
         />
