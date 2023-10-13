@@ -20,13 +20,12 @@ const CharacterList = ({ user }) => {
       <h1>Your Characters</h1>
       {characters ? (
         <ul>
-          {Object.keys(characters).map((characterId) => {
-            const character = characters[characterId];
+          {characters.map((character) => { // Use map function on characters
             return (
-              <li key={characterId}>
+              <li key={character._id}>
                 <p>Name: {character.name}</p>
                 <p>Class: {character.characterClass}</p>
-                <Link to={`/characters/${characterId}`}>View Details</Link>
+                <Link to={`/characters/${character._id}`}>View Details</Link> {/* Use character._id as the link */}
               </li>
             );
           })}
@@ -39,3 +38,4 @@ const CharacterList = ({ user }) => {
 };
 
 export default CharacterList;
+

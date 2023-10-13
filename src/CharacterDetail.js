@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getOneCharacter } from './api/characters';
-import { useNavigate } from 'react-router-dom';
 
 const CharacterDetail = () => {
   const { id } = useParams();
@@ -10,8 +9,8 @@ const CharacterDetail = () => {
 
   useEffect(() => {
     getOneCharacter(id)
-      .then(res => setCharacter(response.data.character))
-      .catch((err) => {
+      .then(res => setCharacter(res.data.character))
+      .catch((error) => {
         console.error('Error fetching character:', error);
       });
   }, [id]);
