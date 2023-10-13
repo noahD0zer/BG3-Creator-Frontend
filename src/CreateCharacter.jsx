@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { getBackgrounds, getClasses, getRaces, getProficiencies } from './api/getoptions';
-import {createCharacter} from './api/characters'
+import {createCharacter} from './api/characters';
 import { createCharacterSucess, createCharacterFailure } from './components/shared/AutoDismissAlert/messages';
 
 
 
 const CreateCharacter = (props) => {
   const { user, msgAlert } = props;
-  console.log(user);
+  //console.log(user);
 
   const [characterData, setCharacterData] = useState({
     name: '',
@@ -51,10 +51,10 @@ const CreateCharacter = (props) => {
     .catch((error) => console.error('Error fetching proficiencies:', error));
     
   }, []);
-  console.log("backgrounds", backgrounds);
-  console.log("classes", classes);
-  console.log("races", races);
-  console.log("proficiencies", proficiencies);
+  // console.log("backgrounds", backgrounds);
+  // console.log("classes", classes);
+  // console.log("races", races);
+  // console.log("proficiencies", proficiencies);
 
 
   const handleProficiencySelect = (e, proficiencyType, index) => {
@@ -71,6 +71,8 @@ const CreateCharacter = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault()
+
+    console.log(characterData)
 
     createCharacter(user,characterData)
         .then(() => {
