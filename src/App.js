@@ -11,10 +11,10 @@ import SignIn from './components/auth/SignIn';
 import SignOut from './components/auth/SignOut';
 import ChangePassword from './components/auth/ChangePassword';
 
-// Import the CreateCharacter component
-import CreateCharacter from './CreateCharacter';
-import CharacterList from './CharacterList';
-import CharacterDetail from './CharacterDetail';
+// Import the Character components
+import CreateCharacter from './components/character/CreateCharacter';
+import CharacterList from './components/character/CharacterList';
+import CharacterDetail from './components/character/CharacterDetail';
 
 const App = () => {
   const [user, setUser] = useState(null);

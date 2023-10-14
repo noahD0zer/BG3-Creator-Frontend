@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { getBackgrounds, getClasses, getRaces, getProficiencies } from './api/getoptions';
-import {createCharacter} from './api/characters';
-import { createCharacterSucess, createCharacterFailure } from './components/shared/AutoDismissAlert/messages';
+import { getBackgrounds, getClasses, getRaces, getProficiencies } from '../../api/getoptions';
+import {createCharacter} from '../../api/characters';
+import { createCharacterSucess, createCharacterFailure } from '../shared/AutoDismissAlert/messages';
 
 
 

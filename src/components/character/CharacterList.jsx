@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getAllCharacters, removeCharacter } from './api/characters'; // Import the removeCharacter function
+import { getAllCharacters, removeCharacter } from '../../api/characters'; // Import the removeCharacter function
 
 const CharacterList = ({ user }) => {
   const [characters, setCharacters] = useState(null);

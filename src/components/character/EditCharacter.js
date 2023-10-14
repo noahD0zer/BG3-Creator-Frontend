@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { updateCharacter } from './api/characters';
-import { getBackgrounds, getClasses, getRaces, getProficiencies } from './api/getoptions';
+import { updateCharacter } from '../../api/characters';
+import { getBackgrounds, getClasses, getRaces, getProficiencies } from '../../api/getoptions';
 
 
 

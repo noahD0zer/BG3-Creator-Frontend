@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getOneCharacter, updateCharacter } from './api/characters';
+import { getOneCharacter, updateCharacter } from '../../api/characters';
 import EditCharacter from './EditCharacter';
 
 
