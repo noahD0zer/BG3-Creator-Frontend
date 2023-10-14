@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Button, Card, CardBody, Col, Row, Container, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import { getAllCharacters, removeCharacter } from '../../api/characters'; // Import the removeCharacter function
 
@@ -33,23 +34,34 @@ const CharacterList = ({ user }) => {
   };
 
   return (
-    <div>
+
+    <Container className="mt-3">
       <h1>Your Characters</h1>
       {characters ? (
-        <ul>
+        <Card>
           {characters.map((character) => (
-            <li key={character._id}>
-              <p>Name: {character.name}</p>
-              <p>Class: {character.characterClass}</p>
-              <Link to={`/characters/${character._id}`}>View Details</Link>
-              <button onClick={() => handleDelete(character._id)}>Delete</button> 
-            </li>
+            <CardBody key={character._id}>
+              <Row>
+                <Col>
+                  <Card.Title>{character.name}</Card.Title>
+                  <Card.Text>{character.race}, {character.characterClass}</Card.Text>
+                </Col>
+
+                <Col className='d-flex justify-content-end'>
+                  <Button className='m-2' href={`/characters/${character._id}`}>View Details</Button>
+                  <Button className='m-2' variant="danger" onClick={() => handleDelete(character._id)}>Delete</Button>                 
+                </Col>
+
+              </Row>
+  
+            </CardBody>
           ))}
-        </ul>
+        </Card>
       ) : (
-        <p>Loading characters...</p>
+        <p>No characters found...</p>
       )}
-    </div>
+    </Container>
+
   );
 };
 
