@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import { changePassword } from '../../api/auth'
 import messages from '../shared/AutoDismissAlert/messages'

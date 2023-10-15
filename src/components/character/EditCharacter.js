@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'
 import { updateCharacter } from '../../api/characters';
 import { getBackgrounds, getClasses, getRaces, getProficiencies } from '../../api/getoptions';
 import { Button, Card, CardBody, Col, Row, Container, Form, FormLabel, FormGroup, FormControl, Dropdown, DropdownToggle, DropdownItem, DropdownMenu } from 'react-bootstrap'
@@ -40,6 +41,7 @@ const EditCharacter = (props) => {
       .catch((error) => console.error('Error fetching proficiencies:', error));
   }, []);
 
+  const navigate = useNavigate()
 
   const updateCharacterDetails = () => {
     console.log('this is character data', characterData)
@@ -51,7 +53,7 @@ const EditCharacter = (props) => {
           variant: 'success',
         });
         setCharacterData(response.data.character);
-        triggerRefresh();
+        navigate(`/character-list`)
       })
       .catch((error) => {
         console.error('Error updating character:', error);
