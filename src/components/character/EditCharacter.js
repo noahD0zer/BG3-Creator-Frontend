@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { updateCharacter } from '../../api/characters';
 import { getBackgrounds, getClasses, getRaces, getProficiencies } from '../../api/getoptions';
-import { Button, Card, CardBody, Col, Row, Container, Form, FormLabel, FormGroup, FormControl, Dropdown, DropdownToggle, DropdownItem, DropdownMenu } from 'react-bootstrap'
+import { Button, Col, Row, Form, FormLabel, FormGroup, FormControl, Dropdown, DropdownToggle, DropdownItem, DropdownMenu } from 'react-bootstrap'
 
 
 
 const EditCharacter = (props) => {
-  const { user, character, msgAlert, triggerRefresh } = props;
+  const { user, character, msgAlert } = props;
 
   const [characterData, setCharacterData] = useState(character);
   const [backgrounds, setBackgrounds] = useState([]);
