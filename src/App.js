@@ -64,18 +64,24 @@ const App = () => {
 
   return (
     <Fragment>
+
       <div style={sectionStyle}>
+
         <Header user={user} />
+
         <Routes>
-          <Route path="/" element={<Home msgAlert={msgAlert} user={user} />} />
+          <Route path="/" element={<CharacterList msgAlert={msgAlert} user={user} />} />
+          
           <Route
             path="/sign-up"
             element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
           />
+          
           <Route
             path="/sign-in"
             element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
           />
+          
           <Route
             path="/sign-out"
             element={
@@ -84,6 +90,7 @@ const App = () => {
               </RequireAuth>
             }
           />
+          
           <Route
             path="/account"
             element={
@@ -92,7 +99,7 @@ const App = () => {
               </RequireAuth>
             }
           />
-          {/* Inject the CreateCharacter component route */}
+          
           <Route
             path="/create-character"
             element={
@@ -101,6 +108,7 @@ const App = () => {
               </RequireAuth>
             }
           />
+          
           <Route
             path="/character-list"
             element={
@@ -109,10 +117,12 @@ const App = () => {
               </RequireAuth>
             }
           />
+          
           <Route
-            path="/characters/:id" // characterdetail without edit is public
+            path="/characters/:id"
             element={<CharacterDetail  user={user} msgAlert={msgAlert} />}
           />
+          
           <Route
             path="/home"
             element={
@@ -121,7 +131,9 @@ const App = () => {
               </RequireAuth>
             }
           />
+        
         </Routes>
+        
         {msgAlerts.map((msgAlert) => (
           <AutoDismissAlert
             key={msgAlert.id}
@@ -132,7 +144,9 @@ const App = () => {
             deleteAlert={deleteAlert}
           />
         ))}
+      
       </div>
+    
     </Fragment>
   );
 };

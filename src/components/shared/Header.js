@@ -47,12 +47,12 @@ const Header = ({ user }) => (
             </Link>
         </Navbar.Brand>
 		<NavbarBrand>
-		<Navbar.Toggle aria-controls='basic-navbar-nav' />
-		<Navbar.Collapse id='basic-navbar-nav'>
-			<Nav className='ml-auto'>
-				{user ? authenticatedOptions : unauthenticatedOptions}
-			</Nav>
-		</Navbar.Collapse>
+			<Navbar.Toggle aria-controls='basic-navbar-nav' />
+			<Navbar.Collapse id='basic-navbar-nav'>
+				<Nav className='ml-auto'>
+					{user ? authenticatedOptions : unauthenticatedOptions}
+				</Nav>
+			</Navbar.Collapse>
 		</NavbarBrand>
 	</Navbar>
 )
