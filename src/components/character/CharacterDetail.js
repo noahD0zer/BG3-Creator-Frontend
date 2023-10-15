@@ -37,7 +37,7 @@ const CharacterDetail = ({ user, msgAlert }) => {
       <Container className='mt-5'>
         <Row>
           <Col>
-            <Card className='m-2'>
+            <Card bg='dark' text='white' className='m-2'>
               <CardBody>
                 <CardTitle className='fs-2'>{character.name}</CardTitle>
                 <CardText className='ms-3'>Background: {character.background}</CardText>
@@ -80,7 +80,7 @@ const CharacterDetail = ({ user, msgAlert }) => {
       
             <Form className='m-2'>
               {editModalShow && (
-                <Card>
+                <Card bg='dark' text='white'>
                   <EditCharacter
                     user={user}
                     updateCharacter={updateCharacter}

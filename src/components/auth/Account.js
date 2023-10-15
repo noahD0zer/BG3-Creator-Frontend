@@ -55,7 +55,7 @@ const Account = (props) => {
     return (
         <div className='row'>
             <Container className='col-sm-10 col-md-8 mx-auto mt-5'>
-                <Card>
+                <Card bg='dark' text='white'>
 
                     <Form className='m-3' onSubmit={onChangePassword}>
                         <Form.Group className='d-flex justify-content-center'>

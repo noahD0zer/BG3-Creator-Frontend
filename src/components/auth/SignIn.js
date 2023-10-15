@@ -4,8 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { signIn } from '../../api/auth'
 import messages from '../shared/AutoDismissAlert/messages'
 
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import { Form, Button, Card, CardHeader } from 'react-bootstrap'
 
 const SignIn = (props) => {
 	// constructor(props) {
@@ -62,8 +61,9 @@ const SignIn = (props) => {
     return (
         <div className='row'>
             <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-                <h3>Sign In</h3>
-                <Form onSubmit={onSignIn}>
+                <Card bg='dark' text='white'>
+                <CardHeader className='fs-3'>Sign In</CardHeader>
+                <Form className='m-3' onSubmit={onSignIn}>
                     <Form.Group controlId='email'>
                         <Form.Label>Email address</Form.Label>
                         <Form.Control
@@ -75,7 +75,7 @@ const SignIn = (props) => {
                             onChange={e => setEmail(e.target.value)}
                         />
                     </Form.Group>
-                    <Form.Group controlId='password'>
+                    <Form.Group className='mt-2' controlId='password'>
                         <Form.Label>Password</Form.Label>
                         <Form.Control
                             required
@@ -86,10 +86,11 @@ const SignIn = (props) => {
                             onChange={e => setPassword(e.target.value)}
                         />
                     </Form.Group>
-                    <Button variant='primary' type='submit'>
+                    <Button className='mt-2' variant='primary' type='submit'>
                         Submit
                     </Button>
                 </Form>
+                </Card>
             </div>
         </div>
     )
