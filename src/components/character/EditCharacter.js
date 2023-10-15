@@ -226,10 +226,6 @@ const EditCharacter = (props) => {
               </DropdownMenu>
             </Dropdown>
           </FormGroup>
-
-          <FormGroup>
-            <Button className='m-2' variant='success' onClick={updateCharacterDetails}>Update Character</Button>
-          </FormGroup>
           
         </Col>
 
@@ -450,6 +446,10 @@ const EditCharacter = (props) => {
         </Col>
 
       </Row>
+
+      <FormGroup>
+        <Button className='m-2' variant='success' onClick={updateCharacterDetails}>Update Character</Button>
+      </FormGroup>
       
     </Form>
 );

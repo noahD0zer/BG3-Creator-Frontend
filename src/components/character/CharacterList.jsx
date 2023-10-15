@@ -35,10 +35,9 @@ const CharacterList = ({ user }) => {
 
   return (
 
-    <Container className="mt-3">
-      <h1>Your Characters</h1>
+    <Container className="mt-5">
       {characters ? (
-        <Card>
+        <Card className='m-4'>
           {characters.map((character) => (
             <CardBody key={character._id}>
               <Row>
