@@ -34,7 +34,7 @@ const CharacterDetail = ({ user, msgAlert }) => {
 
   return (
     <>
-      <Container className='m-2'>
+      <Container className='mt-5'>
         <Row>
           <Col>
             <Card className='m-2'>

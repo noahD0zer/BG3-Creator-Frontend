@@ -47,7 +47,7 @@ const SignIn = (props) => {
 					variant: 'success',
 				})
 			)
-			.then(() => navigate('/'))
+			.then(() => navigate('/character-list'))
 			.catch((error) => {
                 setEmail('')
                 setPassword('')

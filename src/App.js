@@ -9,7 +9,7 @@ import Home from './components/Home';
 import SignUp from './components/auth/SignUp';
 import SignIn from './components/auth/SignIn';
 import SignOut from './components/auth/SignOut';
-import ChangePassword from './components/auth/ChangePassword';
+import Account from './components/auth/Account';
 
 // Import the Character components
 import CreateCharacter from './components/character/CreateCharacter';
@@ -73,10 +73,10 @@ const App = () => {
           }
         />
         <Route
-          path="/change-password"
+          path="/account"
           element={
             <RequireAuth user={user}>
-              <ChangePassword msgAlert={msgAlert} user={user} />
+              <Account msgAlert={msgAlert} user={user} />
             </RequireAuth>
           }
         />
