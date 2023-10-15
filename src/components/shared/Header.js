@@ -35,7 +35,7 @@ const unauthenticatedOptions = (
 )
 
 const Header = ({ user }) => (
-	<Navbar bg='primary' variant='dark' expand='md' className="d-flex justify-content-between">
+	<Navbar bg='dark' variant='dark' expand='md' className="d-flex justify-content-between">
 		<Navbar.Brand className='ms-4'>
             <Link to='/create-character' style={linkStyle}>
                 Create Character
