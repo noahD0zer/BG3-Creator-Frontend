@@ -31,7 +31,7 @@ const SignOut = (props) => {
 	return (
 		<><Container className='d-flex justify-content-between'>
             <Container className='m-5'>
-                <Card>
+                <Card bg='dark' text='white'>
                     <CardHeader className='fs-3'>Are you sure you want to sign out?</CardHeader>
                 </Card>   
                     

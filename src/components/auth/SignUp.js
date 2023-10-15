@@ -5,8 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { signUp, signIn } from '../../api/auth'
 import messages from '../shared/AutoDismissAlert/messages'
 
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import { CardHeader, Card, Form, Button } from 'react-bootstrap'
 
 const SignUp = (props) => {
 	// constructor(props) {
@@ -58,8 +57,9 @@ const SignUp = (props) => {
     return (
         <div className='row'>
             <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-                <h3>Sign Up</h3>
-                <Form onSubmit={onSignUp}>
+                <Card bg='dark' text='white'>
+                <CardHeader className='fs-3'>Sign Up</CardHeader>
+                <Form className='m-3' onSubmit={onSignUp}>
                     <Form.Group controlId='email'>
                         <Form.Label>Email address</Form.Label>
                         <Form.Control
@@ -71,7 +71,7 @@ const SignUp = (props) => {
                             onChange={e => setEmail(e.target.value)}
                         />
                     </Form.Group>
-                    <Form.Group controlId='password'>
+                    <Form.Group className='mt-2' controlId='password'>
                         <Form.Label>Password</Form.Label>
                         <Form.Control
                             required
@@ -82,7 +82,7 @@ const SignUp = (props) => {
                             onChange={e => setPassword(e.target.value)}
                         />
                     </Form.Group>
-                    <Form.Group controlId='passwordConfirmation'>
+                    <Form.Group className='mt-2' controlId='passwordConfirmation'>
                         <Form.Label>Password Confirmation</Form.Label>
                         <Form.Control
                             required
@@ -93,10 +93,11 @@ const SignUp = (props) => {
                             onChange={e => setPasswordConfirmation(e.target.value)}
                         />
                     </Form.Group>
-                    <Button variant='primary' type='submit'>
+                    <Button className='mt-2' variant='primary' type='submit'>
                         Submit
                     </Button>
                 </Form>
+                </Card>
             </div>
         </div>
     )

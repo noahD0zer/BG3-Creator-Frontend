@@ -100,7 +100,7 @@ const CreateCharacter = (props) => {
   
   return (
     <Container className='mt-5'>
-      <Card className='m-2'>
+      <Card bg='dark' text='white' className='m-2'>
       <Form className='m-3' onSubmit={onSubmit}>
       <Button className='mb-3' type="submit" variant="success">Save</Button>
       <Row>
