@@ -1,4 +1,4 @@
-import apiUrl from '../apiConfig'; // Make sure to import the correct API URL
+import apiUrl from '../apiConfig';
 import axios from 'axios';
 
 // Fetch proficiencies

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Button, Card, CardBody, Col, Row, Container } from 'react-bootstrap'
 import { getAllCharacters, removeCharacter } from '../../api/characters'; // Import the removeCharacter function
+
 
 const CharacterList = ({ user }) => {
   const [characters, setCharacters] = useState(null);
@@ -16,9 +17,8 @@ const CharacterList = ({ user }) => {
   }, [user]);
 
   const handleDelete = (characterId) => {
-    removeCharacter(user, characterId) // Use the removeCharacter function
+    removeCharacter(user, characterId)
       .then(() => {
-        // Refresh the character list after deletion
         getAllCharacters(user)
           .then((response) => {
             setCharacters(response.data.characters);
@@ -33,23 +33,35 @@ const CharacterList = ({ user }) => {
   };
 
   return (
-    <div>
-      <h1>Your Characters</h1>
+
+    <Container className="m-5">
       {characters ? (
-        <ul>
+        <Card bg='dark' text='white' className='m-4'>
           {characters.map((character) => (
-            <li key={character._id}>
-              <p>Name: {character.name}</p>
-              <p>Class: {character.characterClass}</p>
-              <Link to={`/characters/${character._id}`}>View Details</Link>
-              <button onClick={() => handleDelete(character._id)}>Delete</button> 
-            </li>
+            <CardBody key={character._id}>
+              <Row>
+                <Col>
+                  <Card.Title>{character.name}</Card.Title>
+                  <Card.Text>{character.race}, {character.characterClass}</Card.Text>
+                </Col>
+
+                <Col className='d-flex justify-content-end'>
+                  <Button className='m-2' href={`/characters/${character._id}`}>View Details</Button>
+                  <Button className='m-2' variant="danger" onClick={() => handleDelete(character._id)}>Delete</Button>                 
+                </Col>
+
+              </Row>
+  
+            </CardBody>
           ))}
-        </ul>
+        </Card>
       ) : (
-        <p>Loading characters...</p>
+        <Card bg='dark' text='white'>
+          <p>No characters found...</p>
+        </Card>  
       )}
-    </div>
+    </Container>
+
   );
 };
 
