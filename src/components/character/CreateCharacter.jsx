@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'
 import { getBackgrounds, getClasses, getRaces, getProficiencies } from '../../api/getoptions';
 import {createCharacter} from '../../api/characters';
 import { createCharacterSucess, createCharacterFailure } from '../shared/AutoDismissAlert/messages';
@@ -58,8 +59,7 @@ const CreateCharacter = (props) => {
   // console.log("proficiencies", proficiencies);
 
 
-  const handleProficiencySelect = (e, proficiencyType, index) => {
-    const selectedValue = e.target.value;
+  const handleProficiencySelect = (selectedValue, proficiencyType, index) => {
     setCharacterData((prevData) => ({
       ...prevData,
       [proficiencyType]: [
@@ -69,6 +69,8 @@ const CreateCharacter = (props) => {
       ],
     }));
   };
+
+  const navigate = useNavigate()
 
   const onSubmit = (e) => {
     e.preventDefault()
@@ -84,6 +86,7 @@ const CreateCharacter = (props) => {
                 variant: 'success'
             })
         })
+        navigate(`/character-list`)
         .catch((error) => {
           console.error('Error creating character:', error);
              msgAlert({
