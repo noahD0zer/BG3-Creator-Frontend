@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Card, CardBody, Col, Row, Container, Form } from 'react-bootstrap'
-import { Link } from 'react-router-dom';
+import { Button, Card, CardBody, Col, Row, Container } from 'react-bootstrap'
 import { getAllCharacters, removeCharacter } from '../../api/characters'; // Import the removeCharacter function
+
 
 const CharacterList = ({ user }) => {
   const [characters, setCharacters] = useState(null);
@@ -35,7 +35,7 @@ const CharacterList = ({ user }) => {
 
   return (
 
-    <Container className="mt-5">
+    <Container className="m-5">
       {characters ? (
         <Card className='m-4'>
           {characters.map((character) => (
