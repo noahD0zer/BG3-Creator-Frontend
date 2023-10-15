@@ -17,9 +17,8 @@ const CharacterList = ({ user }) => {
   }, [user]);
 
   const handleDelete = (characterId) => {
-    removeCharacter(user, characterId) // Use the removeCharacter function
+    removeCharacter(user, characterId)
       .then(() => {
-        // Refresh the character list after deletion
         getAllCharacters(user)
           .then((response) => {
             setCharacters(response.data.characters);
@@ -57,7 +56,9 @@ const CharacterList = ({ user }) => {
           ))}
         </Card>
       ) : (
-        <p>No characters found...</p>
+        <Card bg='dark' text='white'>
+          <p>No characters found...</p>
+        </Card>  
       )}
     </Container>
 

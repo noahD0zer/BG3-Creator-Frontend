@@ -8,14 +8,7 @@ import { Form, Button, Card, Container, CardTitle } from 'react-bootstrap'
 
 
 const Account = (props) => {
-	// constructor(props) {
-	// 	super(props)
 
-	// 	this.state = {
-	// 		oldPassword: '',
-	// 		newPassword: '',
-	// 	}
-	// }
     const [oldPassword, setOldPassword] = useState('')
     const [newPassword, setNewPassword] = useState('')
 
