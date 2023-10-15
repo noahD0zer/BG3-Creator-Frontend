@@ -85,8 +85,9 @@ const CreateCharacter = (props) => {
                 message: createCharacterSucess,
                 variant: 'success'
             })
+            navigate(`/character-list`)
         })
-        navigate(`/character-list`)
+
         .catch((error) => {
           console.error('Error creating character:', error);
              msgAlert({
